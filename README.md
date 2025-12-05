@@ -40,20 +40,13 @@ fdb-bulk-load-framework/
 │  ├─ 03_FDB_Scan_Directories_Preview.sql
 │  ├─ 04_FDB_Insert_Config_From_Directories.sql
 │  ├─ 05_sp_FDB_BulkLoad.sql
-│  └─ examples/
-│     ├─ CounselingMessages.sql
-│     ├─ DrugAllergy.sql
-│     ├─ DrugFoodInteraction.sql
-│     ├─ MinMax.sql
-│     ├─ NDDF_Basics.sql
-│     └─ (additional reference scripts)
 └─ docs/
    └─ FDB_Bulk_Load_Documentation.docx
 ```
 
 ## Script Overview
 
-### 00_FDB_BulkLoadConfig_Table.sql
+### 01_FDB_BulkLoadConfig_Table.sql
 
 Creates the driver table:
 
@@ -69,7 +62,7 @@ CREATE TABLE dbo.FDB_BulkLoadConfig (
 );
 ```
 
-### 01_FDB_BulkLoad_Procedure.sql
+### 02_FDB_BulkLoad_Procedure.sql
 
 Defines the main dynamic-load stored procedure.
 
@@ -88,15 +81,15 @@ EXEC dbo.usp_FDB_BulkLoad
     @Category       = N'NDDF Descriptive and Pricing';
 ```
 
-### 02_FDB_Scan_Directories_Preview.sql
+### 03_FDB_Scan_Directories_Preview.sql
 
 Uses `xp_dirtree` to preview FDB directories and verify SQL Server access.
 
-### 03_FDB_Insert_Config_From_Directories.sql
+### 04_FDB_Insert_Config_From_Directories.sql
 
 Automatically populates the driver table with new file entries using `NOT EXISTS` to avoid duplicates.
 
-### 04_FDB_PreLoad_SchemaFixes.sql
+### 05_FDB_PreLoad_SchemaFixes.sql
 
 Contains known schema adjustments, such as:
 
